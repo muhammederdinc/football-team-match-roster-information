@@ -17,6 +17,16 @@ export default {
       default: '',
     },
   },
+  methods: {
+    emitPickOrUnpick(player, index) {
+      const params = {
+        ...player,
+        index,
+      };
+
+      this.$emit('pickOrUnpick', params);
+    },
+  },
 };
 </script>
 
@@ -37,7 +47,7 @@ export default {
         />
 
         <v-list-item
-          v-for="player in playerList"
+          v-for="(player, index) in playerList"
           :key="player.id"
         >
           <v-list-item-avatar>
@@ -59,7 +69,11 @@ export default {
           </v-list-item-content>
 
           <v-list-item-action>
-            <v-btn small text color="primary">
+            <v-btn
+              small text
+              color="primary"
+              @click="emitPickOrUnpick(player, index)"
+            >
               PICK
             </v-btn>
           </v-list-item-action>

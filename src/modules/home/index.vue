@@ -11,6 +11,7 @@ export default { /* eslint-disable */
     return {
       isLoading: false,
       players: [],
+      selectedPlayers: [],
       meta: {},
     }
   },
@@ -31,6 +32,14 @@ export default { /* eslint-disable */
           this.isLoading = false;
         });
     },
+    pickPlayer(player) {
+      this.players = [
+        ...this.players.slice(0, player.index),
+        ...this.players.slice(player.index + 1),
+      ];
+
+      this.selectedPlayers.push(player);
+    },
   },
 };
 </script>
@@ -47,14 +56,16 @@ export default { /* eslint-disable */
           :player-list="players"
           :loading="isLoading"
           title="All Players"
+          @pickOrUnpick="pickPlayer"
         />
       </v-col>
 
-      <v-col class="text-center" cols="4">
-        <!-- <player-list-card
-          :player-list="players"
+      <v-col cols="4">
+        <player-list-card
+          :player-list="selectedPlayers"
           :loading="isLoading"
-        /> -->
+          title="Lineup"
+        />
       </v-col>
 
       <v-col class="text-center" cols="4">
