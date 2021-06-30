@@ -1,8 +1,12 @@
 <script>
 import { mapActions } from 'vuex';
+import PlayerListCard from '../../components/PlayerListCard';
 
 export default { /* eslint-disable */
   name: 'Home',
+  components: {
+    PlayerListCard,
+  },
   data() {
     return {
       isLoading: false,
@@ -39,67 +43,25 @@ export default { /* eslint-disable */
 
     <v-row justify="center">
       <v-col cols="4">
-        <v-card
-          id="scroll-target"
-          class="overflow-y-auto"
-          height="60vh"
-          width="50vw"
+        <player-list-card
+          :player-list="players"
           :loading="isLoading"
-        >
-          <v-card-text>
-            <v-list v-if="!isLoading" subheader>
-              <v-subheader class="text-h5">All Players</v-subheader>
+          title="All Players"
+        />
+      </v-col>
 
-              <v-list-item
-                v-for="player in players"
-                :key="player.id"
-              >
-                <v-list-item-avatar>
-                  <v-img
-                    :alt="player.display_name"
-                    :src="player.image_url"
-                  />
-                </v-list-item-avatar>
-
-                <v-list-item-content>
-                  <v-list-item-title
-                    v-text="player.display_name"
-                  />
-
-                  <v-list-item-subtitle
-                    v-if="player.position"
-                    v-text="player.position.name"
-                  />
-                </v-list-item-content>
-
-                <v-list-item-action>
-                  <v-btn small text color="primary">PICK</v-btn>
-                </v-list-item-action>
-              </v-list-item>
-            </v-list>
-          </v-card-text>
-        </v-card>
+      <v-col class="text-center" cols="4">
+        <!-- <player-list-card
+          :player-list="players"
+          :loading="isLoading"
+        /> -->
       </v-col>
 
       <v-col class="text-center" cols="4">
         <v-card
           class="pa-2"
           width="50vw"
-        >
-          <v-card-title>
-            Lineup
-          </v-card-title>
-
-          <v-card-text>
-            jk
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-      <v-col class="text-center" cols="4">
-        <v-card
-          class="pa-2"
-          width="50vw"
+          height="60vh"
         >
           <v-card-title>
             Substitutes
