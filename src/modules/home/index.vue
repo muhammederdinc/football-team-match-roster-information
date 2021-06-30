@@ -32,13 +32,25 @@ export default { /* eslint-disable */
           this.isLoading = false;
         });
     },
-    pickPlayer(player) {
+    pickPlayer(playerParams) {
+      const { index, ...player } = playerParams;
+
       this.players = [
-        ...this.players.slice(0, player.index),
-        ...this.players.slice(player.index + 1),
+        ...this.players.slice(0, index),
+        ...this.players.slice(index + 1),
       ];
 
       this.selectedPlayers.push(player);
+    },
+    unPickPlayer(playerParams) {
+      const { index, ...player } = playerParams;
+
+      this.selectedPlayers = [
+        ...this.selectedPlayers.slice(0, index),
+        ...this.selectedPlayers.slice(index + 1),
+      ];
+
+      this.players.push(player);
     },
   },
 };
@@ -65,6 +77,7 @@ export default { /* eslint-disable */
           :player-list="selectedPlayers"
           :loading="isLoading"
           title="Lineup"
+          @pickOrUnpick="unPickPlayer"
         />
       </v-col>
 
