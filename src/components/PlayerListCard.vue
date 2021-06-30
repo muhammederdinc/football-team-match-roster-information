@@ -16,6 +16,11 @@ export default {
       required: false,
       default: '',
     },
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   methods: {
     emitPickOrUnpick(player, index) {
@@ -72,6 +77,7 @@ export default {
             <v-btn
               small text
               color="primary"
+              :disabled="disabled"
               @click="emitPickOrUnpick(player, index)"
             >
               PICK

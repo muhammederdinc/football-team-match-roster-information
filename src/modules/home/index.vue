@@ -18,6 +18,11 @@ export default { /* eslint-disable */
   mounted() {
     this.fetchData();
   },
+  computed: {
+    isDisabledPickPlayerButton() {
+      return this.selectedPlayers.length >= 11;
+    },
+  },
   methods: {
     ...mapActions('home', ['fetchPlayers']),
     fetchData() {
@@ -67,6 +72,7 @@ export default { /* eslint-disable */
         <player-list-card
           :player-list="players"
           :loading="isLoading"
+          :disabled="isDisabledPickPlayerButton"
           title="All Players"
           @pickOrUnpick="pickPlayer"
         />
