@@ -1,29 +1,26 @@
 <script>
+import { mapActions } from 'vuex';
+
 export default { /* eslint-disable */
   name: 'Home',
   data() {
     return {
-      recent: [
-        {
-          active: true,
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-          title: 'Jason Oner',
-        },
-        {
-          active: true,
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-          title: 'Mike Carlson',
-        },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-          title: 'Cindy Baker',
-        },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-          title: 'Ali Connors',
-        },
-      ],
+      players: [],
+      meta: {},
     }
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    ...mapActions('home', ['fetchPlayers']),
+    fetchData() {
+      this.fetchPlayers()
+        .then(({ data }) => {
+          this.players = data.players;
+          this.meta = data.meta;
+        });
+    },
   },
 };
 </script>
@@ -35,7 +32,7 @@ export default { /* eslint-disable */
     </v-toolbar>
 
     <v-row justify="center">
-      <v-col class="text-center" cols="4">
+      <v-col cols="4">
         <v-card
           class="pa-2"
           width="50vw"
@@ -45,19 +42,25 @@ export default { /* eslint-disable */
               <v-subheader class="text-h5">All Players</v-subheader>
 
               <v-list-item
-                v-for="chat in recent"
-                :key="chat.title"
+                v-for="player in players"
+                :key="player.id"
               >
                 <v-list-item-avatar>
                   <v-img
-                    :alt="`${chat.title} avatar`"
-                    :src="chat.avatar"
-                  ></v-img>
+                    :alt="`${player.display_name} avatar`"
+                    :src="player.image_url"
+                  />
                 </v-list-item-avatar>
 
                 <v-list-item-content>
-                  <v-list-item-title v-text="chat.title"></v-list-item-title>
-                  <v-list-item-subtitle>Test</v-list-item-subtitle>
+                  <v-list-item-title
+                    v-text="player.display_name"
+                  />
+
+                  <v-list-item-subtitle
+                    v-if="player.position"
+                    v-text="player.position.name"
+                  />
                 </v-list-item-content>
 
                 <v-list-item-action>
