@@ -5,6 +5,7 @@ export default { /* eslint-disable */
   name: 'Home',
   data() {
     return {
+      isLoading: false,
       players: [],
       meta: {},
     }
@@ -15,10 +16,15 @@ export default { /* eslint-disable */
   methods: {
     ...mapActions('home', ['fetchPlayers']),
     fetchData() {
+      this.isLoading = true;
+
       this.fetchPlayers()
         .then(({ data }) => {
           this.players = data.players;
           this.meta = data.meta;
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
     },
   },
@@ -36,9 +42,10 @@ export default { /* eslint-disable */
         <v-card
           class="pa-2"
           width="50vw"
+          :loading="isLoading"
         >
           <v-card-text>
-            <v-list subheader>
+            <v-list v-if="!isLoading" subheader>
               <v-subheader class="text-h5">All Players</v-subheader>
 
               <v-list-item
