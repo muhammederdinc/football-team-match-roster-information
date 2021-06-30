@@ -40,7 +40,9 @@ export default { /* eslint-disable */
     <v-row justify="center">
       <v-col cols="4">
         <v-card
-          class="pa-2"
+          id="scroll-target"
+          class="overflow-y-auto"
+          height="60vh"
           width="50vw"
           :loading="isLoading"
         >
@@ -71,7 +73,7 @@ export default { /* eslint-disable */
                 </v-list-item-content>
 
                 <v-list-item-action>
-                  <v-btn small text color="success">PICK</v-btn>
+                  <v-btn small text color="primary">PICK</v-btn>
                 </v-list-item-action>
               </v-list-item>
             </v-list>
