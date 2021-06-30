@@ -32,7 +32,7 @@ export default { /* eslint-disable */
 </script>
 
 <template>
-  <v-container style="background-color: white; border-radius: 10px">
+  <v-container class="players">
     <v-toolbar flat dense>
       Toolbar
     </v-toolbar>
@@ -56,7 +56,7 @@ export default { /* eslint-disable */
               >
                 <v-list-item-avatar>
                   <v-img
-                    :alt="`${player.display_name} avatar`"
+                    :alt="player.display_name"
                     :src="player.image_url"
                   />
                 </v-list-item-avatar>
@@ -113,3 +113,11 @@ export default { /* eslint-disable */
     </v-row>
   </v-container>
 </template>
+
+<style lang="scss">
+  .players {
+    background-color: white;
+    border-radius: 10px;
+    width: 70vw;
+  }
+</style>
