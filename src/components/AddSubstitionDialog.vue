@@ -51,6 +51,14 @@ export default {
           item-text="name"
           label="In Player"
         />
+
+        <v-text-field
+          label="Substitution Minute"
+          placeholder="Enter Minute Of Substitution"
+          outlined
+          dense
+          type="number"
+        />
       </v-card-text>
 
       <v-divider />
