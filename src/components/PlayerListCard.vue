@@ -4,7 +4,8 @@ export default {
   props: {
     playerList: {
       type: Array,
-      required: true,
+      required: false,
+      default: () => [],
     },
     loading: {
       type: Boolean,
@@ -95,6 +96,7 @@ export default {
         v-if="substitutes"
         small text
         color="success"
+        @click="$emit('addSubstition')"
       >
         Add Substitutes
       </v-btn>
