@@ -87,20 +87,14 @@ export default { /* eslint-disable */
         />
       </v-col>
 
-      <v-col class="text-center" cols="4">
-        <v-card
-          class="pa-2"
-          width="50vw"
-          height="60vh"
-        >
-          <v-card-title>
-            Substitutes
-          </v-card-title>
-
-          <v-card-text>
-            jk
-          </v-card-text>
-        </v-card>
+      <v-col cols="4">
+        <player-list-card
+          :player-list="selectedPlayers"
+          :loading="isLoading"
+          title="Substitutes"
+          substitutes
+          @pickOrUnpick="unPickPlayer"
+        />
       </v-col>
     </v-row>
   </v-container>

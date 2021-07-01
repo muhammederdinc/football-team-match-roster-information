@@ -21,6 +21,11 @@ export default {
       required: false,
       default: false,
     },
+    substitutes: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   methods: {
     emitPickOrUnpick(player, index) {
@@ -85,6 +90,14 @@ export default {
           </v-list-item-action>
         </v-list-item>
       </v-list>
+
+      <v-btn
+        v-if="substitutes"
+        small text
+        color="success"
+      >
+        Add Substitutes
+      </v-btn>
     </v-card-text>
   </v-card>
 </template>
