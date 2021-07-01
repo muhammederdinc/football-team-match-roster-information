@@ -1,15 +1,18 @@
 <script>
 import { mapActions } from 'vuex';
-import PlayerListCard from '../../components/PlayerListCard';
+import PlayerListCard from '@/components/PlayerListCard';
+import AddSubstitionDialog from '@/components/AddSubstitionDialog';
 
 export default { /* eslint-disable */
   name: 'Home',
   components: {
     PlayerListCard,
+    AddSubstitionDialog,
   },
   data() {
     return {
       isLoading: false,
+      isAddSubstitionDialogVisible: false,
       players: [],
       selectedPlayers: [],
       meta: {},
@@ -21,6 +24,23 @@ export default { /* eslint-disable */
   computed: {
     isDisabledPickPlayerButton() {
       return this.selectedPlayers.length >= 11;
+    },
+    lineups() {
+      return this.selectedPlayers.map(player => ({
+        id: player.id,
+        name: player.display_name,
+      }));
+    },
+    substitutePlayers() {
+      return this.players
+        .filter(({ id: id1 }) => !this.selectedPlayers
+          .some(({ id: id2 }) => id2 === id1))
+            .map(player => (
+              {
+                id: player.id,
+                name: player.display_name,
+              }
+            ));
     },
   },
   methods: {
@@ -89,14 +109,21 @@ export default { /* eslint-disable */
 
       <v-col cols="4">
         <player-list-card
-          :player-list="selectedPlayers"
           :loading="isLoading"
           title="Substitutes"
           substitutes
           @pickOrUnpick="unPickPlayer"
+          @addSubstition="isAddSubstitionDialogVisible = true"
         />
       </v-col>
     </v-row>
+
+    <add-substition-dialog
+      v-if="isAddSubstitionDialogVisible"
+      :lineups="lineups"
+      :substitute-players="substitutePlayers"
+      @closeDialog="isAddSubstitionDialogVisible = false"
+    />
   </v-container>
 </template>
 
