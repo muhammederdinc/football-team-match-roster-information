@@ -45,6 +45,19 @@ export default {
 </template>
 
 <style lang="scss">
+  @font-face {
+    font-family: "SofiaProLight";
+    src: local("SofiaProLight"),
+    url('./fonts/Mostardesign-SofiaProLight.otf');
+  }
+
+  .sofia-pro-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2B2C3F;
+    font-family: "SofiaProLight";
+  }
+
   .app__bar {
     padding-left: 14vw;
     padding-right: 12vw;

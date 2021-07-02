@@ -64,11 +64,9 @@ export default {
   >
     <v-card-text>
       <v-list v-if="!loading" subheader>
-        <v-subheader
-          v-if="title"
-          v-text="title"
-          class="text-h5"
-        />
+        <v-subheader v-if="title">
+          <span class="sofia-pro-title"> {{ title }} </span>
+        </v-subheader>
 
         <v-list-item
           v-for="(player, index) in playerList"

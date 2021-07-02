@@ -90,7 +90,7 @@ export default { /* eslint-disable */
 
 <template>
   <v-container class="home">
-    <v-toolbar class="home__toolbar" flat dense>
+    <v-toolbar flat dense>
       <v-row>
         <v-col cols="auto">
           <v-avatar outline>
@@ -100,7 +100,7 @@ export default { /* eslint-disable */
             >
           </v-avatar>
           
-          <span class="home__toolbar--title">
+          <span class="sofia-pro-title">
             Beşiktaş JK
           </span>
 
@@ -170,15 +170,5 @@ export default { /* eslint-disable */
     background-color: white;
     border-radius: 10px;
     width: 70vw;
-
-    &__toolbar {
-      font-size: 19px;
-      font-family: "SofiaPro, Regular, 16px";
-      font-weight: 600;
-
-      &--title {
-        color: #2B2C3F;
-      }
-    }
   }
 </style>
