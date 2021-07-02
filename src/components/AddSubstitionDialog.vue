@@ -19,6 +19,9 @@ export default {
   },
   methods: {
     submit() {
+      this.formData.outPlayer.substitutionMinute = this.formData.substitutionMinute;
+      this.formData.inPlayer.substitutionMinute = this.formData.substitutionMinute;
+
       this.$emit('substitution', this.formData);
       this.closeDialog();
     },
@@ -64,6 +67,7 @@ export default {
         />
 
         <v-text-field
+          v-model="formData.substitutionMinute"
           placeholder="Enter Minute Of Substitution"
           label="Substitution Minute"
           type="number"

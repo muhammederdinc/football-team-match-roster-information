@@ -13,6 +13,7 @@ export default { /* eslint-disable */
     return {
       isLoading: false,
       isAddSubstitionDialogVisible: false,
+      isLineupCardVisible: true,
       substitutes: [],
       players: [],
       lineups: [],
@@ -73,9 +74,11 @@ export default { /* eslint-disable */
       this.players.push(player);
     },
     addSubstitution(substitutionParams) {
+      this.isLineupCardVisible = false;
       this.substitutes.push(substitutionParams.inPlayer);
       this.lineups = this.lineups.filter(player => player.id !== substitutionParams.outPlayer.id);
       this.substitutePlayers = this.substitutePlayers.filter(player => player.id !== substitutionParams.inPlayer.id);
+      this.$nextTick(() => { this.isLineupCardVisible = true });
     },
   },
 };
@@ -94,12 +97,14 @@ export default { /* eslint-disable */
           :loading="isLoading"
           :disabled="isDisabledPickPlayerButton"
           title="All Players"
+          all-players
           @pickOrUnpick="pickPlayer"
         />
       </v-col>
 
       <v-col cols="4">
         <player-list-card
+          v-if="isLineupCardVisible"
           :player-list="selectedPlayers"
           :loading="isLoading"
           title="Lineup"

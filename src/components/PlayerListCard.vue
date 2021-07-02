@@ -27,6 +27,11 @@ export default {
       required: false,
       default: false,
     },
+    allPlayers: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   methods: {
     emitPickOrUnpick(player, index) {
@@ -36,6 +41,9 @@ export default {
       };
 
       this.$emit('pickOrUnpick', params);
+    },
+    isSubstitutionMinuteVisible(player) {
+      return player.substitutionMinute > -1;
     },
   },
 };
@@ -80,7 +88,15 @@ export default {
           </v-list-item-content>
 
           <v-list-item-action>
+            <span v-if="isSubstitutionMinuteVisible(player) && !allPlayers">
+              <v-icon v-if="substitutes" color="success">mdi-arrow-up</v-icon>
+              <v-icon v-else color="error">mdi-arrow-down</v-icon>
+
+              {{ player.substitutionMinute }}'
+            </span>
+
             <v-btn
+              v-else
               small text
               color="primary"
               :disabled="disabled"
