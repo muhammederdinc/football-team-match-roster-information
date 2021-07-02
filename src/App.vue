@@ -14,13 +14,13 @@ export default {
     >
       <v-container class="py-0 fill-height app__bar--title">
         <v-row>
-          <v-col cols="auto" offset="2">
+          <v-col cols="auto">
             SCOUTIUM
           </v-col>
 
           <v-spacer />
 
-          <v-col offset="4">
+          <v-col cols="auto">
             <v-avatar
               class="mr-10"
               color="grey darken-1"
@@ -46,11 +46,14 @@ export default {
 
 <style lang="scss">
   .app__bar {
-    &--title {
-      color: #12C990;
-      font-size: 24px;
-      font-family: "SofiaPro, Regular, 20px";
-      font-weight: bold;
-    }
+    padding-left: 14vw;
+    padding-right: 12vw;
+
+      &--title {
+        color: #12C990;
+        font-size: 24px;
+        font-family: "SofiaPro, Regular, 20px";
+        font-weight: bold;
+      }
   }
 </style>
