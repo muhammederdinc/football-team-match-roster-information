@@ -87,7 +87,29 @@ export default { /* eslint-disable */
 <template>
   <v-container class="players">
     <v-toolbar flat dense>
-      Toolbar
+      <v-row>
+        <v-col cols="auto">
+          <v-avatar outline>
+            <img
+              src="@/assets/bjk.svg"
+              alt="Bjk"
+            >
+          </v-avatar>
+
+          Beşiktaş JK
+        </v-col>
+
+        <v-spacer />
+
+        <v-col class="px-0 mx-0" cols="2">
+          <v-btn
+            depressed block
+            color="primary"
+          >
+            Confirm
+          </v-btn>
+        </v-col>
+      </v-row>
     </v-toolbar>
 
     <v-row justify="center">
