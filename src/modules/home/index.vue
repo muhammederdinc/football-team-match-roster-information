@@ -90,10 +90,10 @@ export default { /* eslint-disable */
 
 <template>
   <v-container class="home">
-    <v-toolbar flat dense>
+    <v-toolbar class="mb-2" flat dense>
       <v-row>
         <v-col cols="auto">
-          <v-avatar outline>
+          <v-avatar size="32" outline>
             <img
               src="@/assets/bjk.svg"
               alt="Bjk"
