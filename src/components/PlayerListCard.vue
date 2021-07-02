@@ -33,6 +33,11 @@ export default {
       default: false,
     },
   },
+  computed: {
+    isAddSubstitutesButtonVisible() {
+      return this.playerList.filter((player) => player.substitutionMinute > -1).length < 5;
+    },
+  },
   methods: {
     emitPickOrUnpick(player, index) {
       const params = {
@@ -109,7 +114,7 @@ export default {
       </v-list>
 
       <v-btn
-        v-if="substitutes"
+        v-if="substitutes && isAddSubstitutesButtonVisible"
         small text
         color="success"
         @click="$emit('addSubstition')"
