@@ -65,7 +65,7 @@ export default {
       &--title {
         color: #12C990;
         font-size: 24px;
-        font-family: "SofiaPro, Regular, 20px";
+        font-family: "SofiaPro";
         font-weight: bold;
       }
   }
