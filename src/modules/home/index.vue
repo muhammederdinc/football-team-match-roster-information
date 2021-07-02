@@ -39,7 +39,7 @@ export default { /* eslint-disable */
       return this.selectedPlayers.length >= 11;
     },
     isConfirmButtonDisable() {
-      return this.lineups.length < 11;
+      return this.selectedPlayers.length !== 11;
     },
   },
   methods: {

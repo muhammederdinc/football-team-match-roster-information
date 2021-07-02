@@ -113,7 +113,7 @@ export default {
 
       <v-btn
         v-if="substitutes && isAddSubstitutesButtonVisible"
-        x-small text
+        small text
         color="#12C990"
         @click="$emit('addSubstition')"
       >
