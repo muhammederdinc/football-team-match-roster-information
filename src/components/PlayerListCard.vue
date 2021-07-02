@@ -117,7 +117,10 @@ export default {
         color="#12C990"
         @click="$emit('addSubstition')"
       >
-        <v-icon small>mdi-plus</v-icon>
+        <v-icon small>
+          mdi-plus
+        </v-icon>
+
         Add Substitutes
       </v-btn>
     </v-card-text>
