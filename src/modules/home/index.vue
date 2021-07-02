@@ -160,6 +160,6 @@ export default { /* eslint-disable */
   .players {
     background-color: white;
     border-radius: 10px;
-    width: 70vw;
+    width: 62vw;
   }
 </style>
