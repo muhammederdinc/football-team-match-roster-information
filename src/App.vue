@@ -51,11 +51,30 @@ export default {
     url('./fonts/Mostardesign-SofiaProLight.otf');
   }
 
+  @font-face {
+    font-family: "SofiaProRegular";
+    src: local("SofiaProRegular"),
+    url('./fonts/Mostardesign-SofiaProRegular.otf');
+  }
+
   .sofia-pro-title {
     font-size: 20px;
     font-weight: 600;
     color: #2B2C3F;
     font-family: "SofiaProLight";
+  }
+
+  .sofia-pro-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2B2C3F;
+    font-family: "SofiaProLight";
+  }
+
+  .sofia-pro-caption {
+    font-size: 14px;
+    color: #9699BE;
+    font-family: "SofiaProRegular";
   }
 
   .app__bar {
