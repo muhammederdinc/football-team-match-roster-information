@@ -49,7 +49,8 @@ export default { /* eslint-disable */
 
       this.fetchPlayers()
         .then(({ data }) => {
-          this.players = data.players;
+          this.players = data.players
+            .filter((player) => player.team.club.id === 4029 && player.gender === 'male');
           this.meta = data.meta;
         })
         .finally(() => {
