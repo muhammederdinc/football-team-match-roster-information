@@ -17,6 +17,15 @@ export default {
       formData: {},
     };
   },
+  methods: {
+    submit() {
+      this.$emit('substitution', this.formData);
+      this.closeDialog();
+    },
+    closeDialog() {
+      this.$emit('closeDialog');
+    },
+  },
 };
 </script>
 
@@ -35,29 +44,31 @@ export default {
         <v-autocomplete
           v-model="formData.outPlayer"
           :items="lineups"
-          outlined
           dense
+          outlined
           clearable
-          item-text="name"
+          return-object
           label="Out Player"
+          item-text="display_name"
         />
 
         <v-autocomplete
           v-model="formData.inPlayer"
           :items="substitutePlayers"
-          outlined
           dense
+          outlined
           clearable
-          item-text="name"
+          return-object
           label="In Player"
+          item-text="display_name"
         />
 
         <v-text-field
-          label="Substitution Minute"
           placeholder="Enter Minute Of Substitution"
+          label="Substitution Minute"
+          type="number"
           outlined
           dense
-          type="number"
         />
       </v-card-text>
 
@@ -69,7 +80,7 @@ export default {
         <v-btn
           text small
           color="error"
-          @click="$emit('closeDialog')"
+          @click="closeDialog"
         >
           Cancel
         </v-btn>
@@ -77,6 +88,7 @@ export default {
         <v-btn
           small depressed
           color="success"
+          @click="submit"
         >
           I accept
         </v-btn>

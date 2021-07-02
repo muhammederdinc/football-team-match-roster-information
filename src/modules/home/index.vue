@@ -13,34 +13,29 @@ export default { /* eslint-disable */
     return {
       isLoading: false,
       isAddSubstitionDialogVisible: false,
+      substitutes: [],
       players: [],
+      lineups: [],
       selectedPlayers: [],
+      substitutePlayers: [],
       meta: {},
     }
   },
   mounted() {
     this.fetchData();
   },
+  watch: {
+    selectedPlayers(newSelectedPlayers) {
+      this.substitutePlayers = this.players
+          .filter(({ id: id1 }) => !this.selectedPlayers
+            .some(({ id: id2 }) => id2 === id1));
+
+      this.lineups = newSelectedPlayers;
+    },
+  },
   computed: {
     isDisabledPickPlayerButton() {
       return this.selectedPlayers.length >= 11;
-    },
-    lineups() {
-      return this.selectedPlayers.map(player => ({
-        id: player.id,
-        name: player.display_name,
-      }));
-    },
-    substitutePlayers() {
-      return this.players
-        .filter(({ id: id1 }) => !this.selectedPlayers
-          .some(({ id: id2 }) => id2 === id1))
-            .map(player => (
-              {
-                id: player.id,
-                name: player.display_name,
-              }
-            ));
     },
   },
   methods: {
@@ -77,6 +72,11 @@ export default { /* eslint-disable */
 
       this.players.push(player);
     },
+    addSubstitution(substitutionParams) {
+      this.substitutes.push(substitutionParams.inPlayer);
+      this.lineups = this.lineups.filter(player => player.id !== substitutionParams.outPlayer.id);
+      this.substitutePlayers = this.substitutePlayers.filter(player => player.id !== substitutionParams.inPlayer.id);
+    },
   },
 };
 </script>
@@ -109,6 +109,7 @@ export default { /* eslint-disable */
 
       <v-col cols="4">
         <player-list-card
+          :player-list="substitutes"
           :loading="isLoading"
           title="Substitutes"
           substitutes
@@ -123,6 +124,7 @@ export default { /* eslint-disable */
       :lineups="lineups"
       :substitute-players="substitutePlayers"
       @closeDialog="isAddSubstitionDialogVisible = false"
+      @substitution="addSubstitution"
     />
   </v-container>
 </template>
