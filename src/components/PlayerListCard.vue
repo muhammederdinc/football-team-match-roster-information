@@ -82,12 +82,12 @@ export default {
           <v-list-item-content>
             <v-list-item-title
               v-text="player.display_name"
+              class="sofia-pro-subtitle"
             />
 
-            <v-list-item-subtitle
-              v-if="player.position"
-              v-text="player.position.name"
-            />
+            <v-list-item-subtitle v-if="player.position">
+              <span class="sofia-pro-caption"> {{ player.position.name }} </span>
+            </v-list-item-subtitle>
           </v-list-item-content>
 
           <v-list-item-action>
@@ -114,9 +114,10 @@ export default {
       <v-btn
         v-if="substitutes && isAddSubstitutesButtonVisible"
         small text
-        color="success"
+        color="#12C990"
         @click="$emit('addSubstition')"
       >
+        <v-icon small>mdi-plus</v-icon>
         Add Substitutes
       </v-btn>
     </v-card-text>

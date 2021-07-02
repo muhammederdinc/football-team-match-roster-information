@@ -40,7 +40,7 @@ export default {
   >
     <v-card>
       <v-card-title class="text-h5">
-        Add Substition
+        <span class="sofia-pro-title">Add Substition</span>
       </v-card-title>
 
       <v-card-text>
