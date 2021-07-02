@@ -38,6 +38,9 @@ export default { /* eslint-disable */
     isDisabledPickPlayerButton() {
       return this.selectedPlayers.length >= 11;
     },
+    isConfirmButtonDisable() {
+      return this.lineups.length < 11;
+    },
   },
   methods: {
     ...mapActions('home', ['fetchPlayers']),
@@ -85,8 +88,8 @@ export default { /* eslint-disable */
 </script>
 
 <template>
-  <v-container class="players">
-    <v-toolbar flat dense>
+  <v-container class="home">
+    <v-toolbar class="home__toolbar" flat dense>
       <v-row>
         <v-col cols="auto">
           <v-avatar outline>
@@ -95,16 +98,21 @@ export default { /* eslint-disable */
               alt="Bjk"
             >
           </v-avatar>
+          
+          <span class="home__toolbar--title">
+            Beşiktaş JK
+          </span>
 
-          Beşiktaş JK
         </v-col>
 
         <v-spacer />
 
         <v-col class="px-0 mx-0" cols="2">
           <v-btn
+            :disabled="isConfirmButtonDisable"
             depressed block
-            color="primary"
+            color="#3852FF"
+            class="white--text text-capitalize"
           >
             Confirm
           </v-btn>
@@ -157,9 +165,19 @@ export default { /* eslint-disable */
 </template>
 
 <style lang="scss">
-  .players {
+  .home {
     background-color: white;
     border-radius: 10px;
     width: 70vw;
+
+    &__toolbar {
+      font-size: 19px;
+      font-family: "SofiaPro, Regular, 16px";
+      font-weight: 600;
+
+      &--title {
+        color: #2B2C3F;
+      }
+    }
   }
 </style>
