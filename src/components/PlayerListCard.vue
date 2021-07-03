@@ -107,11 +107,11 @@ export default {
               <v-btn
                 v-else-if="!isSubstitutionMinuteVisible(player) && !preview"
                 small text
-                color="primary"
                 :disabled="disabled"
+                :color="allPlayers ? 'primary' : 'error'"
                 @click="emitPickOrUnpick(player, index)"
               >
-                PICK
+                {{ allPlayers ? 'PICK' : 'UNPINK' }}
               </v-btn>
             </v-list-item-action>
           </v-list-item>
@@ -119,7 +119,7 @@ export default {
       </v-list>
 
       <v-btn
-        v-if="substitutes && isAddSubstitutesButtonVisible"
+        v-if="substitutes && isAddSubstitutesButtonVisible && !preview"
         small text
         color="#12C990"
         @click="$emit('addSubstition')"
