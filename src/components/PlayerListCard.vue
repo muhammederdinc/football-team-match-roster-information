@@ -73,47 +73,49 @@ export default {
           <span class="sofia-pro-title"> {{ title }} </span>
         </v-subheader>
 
-        <v-list-item
-          v-for="(player, index) in playerList"
-          :key="player.id"
-        >
-          <v-list-item-avatar>
-            <v-img
-              :alt="player.display_name"
-              :src="player.image_url"
-            />
-          </v-list-item-avatar>
+        <slot>
+          <v-list-item
+            v-for="(player, index) in playerList"
+            :key="player.id"
+          >
+            <v-list-item-avatar>
+              <v-img
+                :alt="player.display_name"
+                :src="player.image_url"
+              />
+            </v-list-item-avatar>
 
-          <v-list-item-content>
-            <v-list-item-title
-              v-text="player.display_name"
-              class="sofia-pro-subtitle"
-            />
+            <v-list-item-content>
+              <v-list-item-title
+                v-text="player.display_name"
+                class="sofia-pro-subtitle"
+              />
 
-            <v-list-item-subtitle v-if="player.position">
-              <span class="sofia-pro-caption"> {{ player.position.name }} </span>
-            </v-list-item-subtitle>
-          </v-list-item-content>
+              <v-list-item-subtitle v-if="player.position">
+                <span class="sofia-pro-caption"> {{ player.position.name }} </span>
+              </v-list-item-subtitle>
+            </v-list-item-content>
 
-          <v-list-item-action>
-            <span v-if="isSubstitutionMinuteVisible(player)">
-              <v-icon v-if="substitutes" color="success">mdi-arrow-up</v-icon>
-              <v-icon v-else color="error">mdi-arrow-down</v-icon>
+            <v-list-item-action>
+              <span v-if="isSubstitutionMinuteVisible(player)">
+                <v-icon v-if="substitutes" color="success">mdi-arrow-up</v-icon>
+                <v-icon v-else color="error">mdi-arrow-down</v-icon>
 
-              {{ player.substitutionMinute }}'
-            </span>
+                {{ player.substitutionMinute }}'
+              </span>
 
-            <v-btn
-              v-else-if="!isSubstitutionMinuteVisible(player) && !preview"
-              small text
-              color="primary"
-              :disabled="disabled"
-              @click="emitPickOrUnpick(player, index)"
-            >
-              PICK
-            </v-btn>
-          </v-list-item-action>
-        </v-list-item>
+              <v-btn
+                v-else-if="!isSubstitutionMinuteVisible(player) && !preview"
+                small text
+                color="primary"
+                :disabled="disabled"
+                @click="emitPickOrUnpick(player, index)"
+              >
+                PICK
+              </v-btn>
+            </v-list-item-action>
+          </v-list-item>
+        </slot>
       </v-list>
 
       <v-btn

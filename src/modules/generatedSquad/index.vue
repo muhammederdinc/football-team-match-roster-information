@@ -31,7 +31,24 @@ export default {
 
     <v-row justify="center">
       <v-col cols="4">
-        <player-list-card />
+        <player-list-card>
+          <v-row no-gutters align-content="center" justify="center" fill-height>
+            <v-col cols="auto">
+              <v-avatar size="48" outline>
+                <img
+                  src="@/assets/bjk.svg"
+                  alt="Bjk"
+                >
+              </v-avatar>
+            </v-col>
+
+            <v-col class="text-center" cols="12">
+              <span class="sofia-pro-title">
+                Beşiktaş JK
+              </span>
+            </v-col>
+          </v-row>
+        </player-list-card>
       </v-col>
 
       <v-col cols="4">
