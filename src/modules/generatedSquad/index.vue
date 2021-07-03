@@ -32,7 +32,13 @@ export default {
     <v-row justify="center">
       <v-col cols="4">
         <player-list-card>
-          <v-row no-gutters align-content="center" justify="center" fill-height>
+          <v-row
+            class="generated-squad__row"
+            align-content="center"
+            justify="center"
+            fill-height
+            no-gutters
+          >
             <v-col cols="auto">
               <v-avatar size="48" outline>
                 <img
@@ -63,9 +69,18 @@ export default {
         <player-list-card
           :player-list="substitutes"
           title="Substitutes"
+          substitutes
           preview
         />
       </v-col>
     </v-row>
   </v-container>
 </template>
+
+<style lang="scss" scoped>
+  .generated-squad {
+    &__row {
+      height: 55vh;
+    }
+  }
+</style>
