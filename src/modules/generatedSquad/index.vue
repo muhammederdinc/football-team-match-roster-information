@@ -31,8 +31,7 @@ export default {
 
     <v-row justify="center">
       <v-col cols="4">
-        <player-list-card
-        />
+        <player-list-card />
       </v-col>
 
       <v-col cols="4">

@@ -43,7 +43,7 @@ export default { /* eslint-disable */
     },
   },
   methods: {
-    ...mapActions('home', ['fetchPlayers']),
+    ...mapActions('home', ['fetchPlayers', 'setCreatedStaff']),
     fetchData() {
       this.isLoading = true;
 
@@ -84,6 +84,15 @@ export default { /* eslint-disable */
       this.substitutePlayers = this.substitutePlayers.filter(player => player.id !== substitutionParams.inPlayer.id);
       this.$nextTick(() => { this.isLineupCardVisible = true });
     },
+    confirm() {
+      const params = {
+        lineups: this.selectedPlayers,
+        substitutes: this.substitutes,
+      };
+
+      this.setCreatedStaff(params);
+      this.$router.push('/generatedSquad');
+    },
   },
 };
 </script>
@@ -114,6 +123,7 @@ export default { /* eslint-disable */
             depressed block
             color="#3852FF"
             class="white--text text-capitalize"
+            @click="confirm"
           >
             Confirm
           </v-btn>
