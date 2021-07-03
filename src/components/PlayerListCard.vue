@@ -32,6 +32,11 @@ export default {
       required: false,
       default: false,
     },
+    preview: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   computed: {
     isAddSubstitutesButtonVisible() {
@@ -48,7 +53,7 @@ export default {
       this.$emit('pickOrUnpick', params);
     },
     isSubstitutionMinuteVisible(player) {
-      return player.substitutionMinute > -1;
+      return player.substitutionMinute > -1 && !this.allPlayers;
     },
   },
 };
@@ -58,7 +63,7 @@ export default {
   <v-card
     id="scroll-target"
     class="overflow-y-auto"
-    height="60vh"
+    height="65vh"
     width="50vw"
     :loading="loading"
   >
@@ -91,7 +96,7 @@ export default {
           </v-list-item-content>
 
           <v-list-item-action>
-            <span v-if="isSubstitutionMinuteVisible(player) && !allPlayers">
+            <span v-if="isSubstitutionMinuteVisible(player)">
               <v-icon v-if="substitutes" color="success">mdi-arrow-up</v-icon>
               <v-icon v-else color="error">mdi-arrow-down</v-icon>
 
@@ -99,7 +104,7 @@ export default {
             </span>
 
             <v-btn
-              v-else
+              v-else-if="!isSubstitutionMinuteVisible(player) && !preview"
               small text
               color="primary"
               :disabled="disabled"
