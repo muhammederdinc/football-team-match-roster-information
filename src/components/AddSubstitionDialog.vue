@@ -14,16 +14,19 @@ export default {
   data() {
     return {
       isVisible: true,
+      isValid: true,
       formData: {},
     };
   },
   methods: {
     submit() {
-      this.formData.outPlayer.substitutionMinute = this.formData.substitutionMinute;
-      this.formData.inPlayer.substitutionMinute = this.formData.substitutionMinute;
+      if (this.$refs.form.validate()) {
+        this.formData.outPlayer.substitutionMinute = this.formData.substitutionMinute;
+        this.formData.inPlayer.substitutionMinute = this.formData.substitutionMinute;
 
-      this.$emit('substitution', this.formData);
-      this.closeDialog();
+        this.$emit('substitution', this.formData);
+        this.closeDialog();
+      }
     },
     closeDialog() {
       this.$emit('closeDialog');
@@ -44,36 +47,44 @@ export default {
       </v-card-title>
 
       <v-card-text>
-        <v-autocomplete
-          v-model="formData.outPlayer"
-          :items="lineups"
-          dense
-          outlined
-          clearable
-          return-object
-          label="Out Player"
-          item-text="display_name"
-        />
+        <v-form
+          v-model="isValid"
+          ref="form"
+        >
+          <v-autocomplete
+            v-model="formData.outPlayer"
+            :items="lineups"
+            :rules="[v => !!v || 'Out player is required']"
+            dense
+            outlined
+            clearable
+            return-object
+            label="Out Player"
+            item-text="display_name"
+          />
 
-        <v-autocomplete
-          v-model="formData.inPlayer"
-          :items="substitutePlayers"
-          dense
-          outlined
-          clearable
-          return-object
-          label="In Player"
-          item-text="display_name"
-        />
+          <v-autocomplete
+            v-model="formData.inPlayer"
+            :items="substitutePlayers"
+            :rules="[v => !!v || 'In player is required']"
+            dense
+            outlined
+            clearable
+            return-object
+            label="In Player"
+            item-text="display_name"
+          />
 
-        <v-text-field
-          v-model="formData.substitutionMinute"
-          placeholder="Enter Minute Of Substitution"
-          label="Substitution Minute"
-          type="number"
-          outlined
-          dense
-        />
+          <v-text-field
+            v-model="formData.substitutionMinute"
+            :rules="[v => !!v || 'Substitution minute is required']"
+            placeholder="Enter Minute Of Substitution"
+            label="Substitution Minute"
+            type="number"
+            outlined
+            dense
+          />
+        </v-form>
       </v-card-text>
 
       <v-divider />
