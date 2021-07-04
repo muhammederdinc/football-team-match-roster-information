@@ -104,7 +104,7 @@ export default { /* eslint-disable */
 </script>
 
 <template>
-  <v-container class="home">
+  <v-container class="home mt-5 pa-5">
     <v-toolbar class="mb-2" flat dense>
       <v-row no-gutters>
         <v-col cols="auto">

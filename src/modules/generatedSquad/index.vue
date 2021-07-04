@@ -18,7 +18,7 @@ export default {
 
 <template>
   <v-container class="home">
-    <v-toolbar class="mb-2" flat dense>
+    <v-toolbar class="ma-8" flat dense>
       <v-row justify="center">
         <v-col cols="auto">
           <v-icon x-large color="#12C990">
