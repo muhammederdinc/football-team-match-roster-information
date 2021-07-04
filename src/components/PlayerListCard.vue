@@ -145,6 +145,7 @@ export default {
         :disabled="disabled"
         small text
         color="#12C990"
+        class="mx-1 my-0 text-capitalize"
         @click="$emit('addSubstition')"
       >
         <v-icon small>

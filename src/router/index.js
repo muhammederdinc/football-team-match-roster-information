@@ -12,7 +12,7 @@ const routes = [
     component: Home,
   },
   {
-    path: '/generatedSquad',
+    path: '/generated-squad',
     name: 'GeneratedSquad',
     component: GeneratedSquad,
   },

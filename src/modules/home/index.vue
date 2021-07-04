@@ -73,7 +73,7 @@ export default { /* eslint-disable */
       };
 
       this.setCreatedStaff(params);
-      this.$router.push('/generatedSquad');
+      this.$router.push('/generated-squad');
     },
     pickPlayer(playerParams) {
       const { index, ...player } = playerParams;
