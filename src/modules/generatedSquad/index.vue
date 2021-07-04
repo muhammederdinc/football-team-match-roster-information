@@ -29,8 +29,8 @@ export default {
       </v-row>
     </v-toolbar>
 
-    <v-row justify="center">
-      <v-col cols="4">
+    <v-row>
+      <v-col lg="4" xs="12" sm="12">
         <player-list-card>
           <v-row
             class="generated-squad__row"
@@ -57,7 +57,7 @@ export default {
         </player-list-card>
       </v-col>
 
-      <v-col cols="4">
+      <v-col lg="4" xs="12" sm="12">
         <player-list-card
           :player-list="lineups"
           title="Lineup"
@@ -65,7 +65,7 @@ export default {
         />
       </v-col>
 
-      <v-col cols="4">
+      <v-col lg="4" xs="12" sm="12">
         <player-list-card
           :player-list="substitutes"
           title="Substitutes"

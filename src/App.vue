@@ -8,11 +8,11 @@ export default {
   <v-app id="inspire">
     <v-app-bar
       color="#02063F"
-      class="app__bar"
+      class="app-bar"
       app
       flat
     >
-      <v-container class="py-0 fill-height app__bar--title">
+      <v-container class="py-0 fill-height app-bar__container">
         <v-row>
           <v-col cols="auto">
             SCOUTIUM
@@ -20,7 +20,7 @@ export default {
 
           <v-spacer />
 
-          <v-col cols="auto">
+          <v-col class="d-none d-sm-flex" cols="auto">
             <v-avatar
               class="mr-10"
               color="grey darken-1"
@@ -45,11 +45,11 @@ export default {
 </template>
 
 <style lang="scss">
-  .app__bar {
+  .app-bar {
     padding-left: 14vw;
     padding-right: 12vw;
 
-      &--title {
+      &__container {
         color: #12C990;
         font-size: 24px;
         font-family: "SofiaPro";

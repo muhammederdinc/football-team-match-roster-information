@@ -62,9 +62,8 @@ export default {
 <template>
   <v-card
     id="scroll-target"
-    class="overflow-y-auto"
+    class="overflow-y-auto player-list-card"
     height="65vh"
-    width="50vw"
     :loading="loading"
   >
     <v-card-text>
@@ -134,3 +133,22 @@ export default {
     </v-card-text>
   </v-card>
 </template>
+
+<style lang="scss">
+  .player-list-card {
+    @media only screen and (max-width: 600px) {
+      min-width: 350px;
+      max-width: 600px;
+    }
+
+    @media only screen and (max-width: 400px) {
+      min-width: 150px;
+      max-width: 400px;
+    }
+
+    @media only screen and (max-width: 200px) {
+      min-width: 0;
+      max-width: 150px;
+    }
+  }
+</style>

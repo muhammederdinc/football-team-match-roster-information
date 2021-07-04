@@ -106,7 +106,7 @@ export default { /* eslint-disable */
 <template>
   <v-container class="home">
     <v-toolbar class="mb-2" flat dense>
-      <v-row>
+      <v-row no-gutters>
         <v-col cols="auto">
           <v-avatar size="32" outline>
             <img
@@ -114,16 +114,17 @@ export default { /* eslint-disable */
               alt="Bjk"
             >
           </v-avatar>
-          
+        </v-col>
+
+        <v-col cols="auto" class="d-none d-sm-flex">
           <span class="sofia-pro-title">
             Beşiktaş JK
           </span>
-
         </v-col>
 
         <v-spacer />
 
-        <v-col class="px-0 mx-0" cols="2">
+        <v-col class="px-0 mx-0" lg="2" md="2" xs="12" sm="4">
           <v-btn
             :disabled="isConfirmButtonDisable"
             depressed block
@@ -138,7 +139,7 @@ export default { /* eslint-disable */
     </v-toolbar>
 
     <v-row justify="center">
-      <v-col cols="4">
+      <v-col lg="4" xs="12" sm="12">
         <player-list-card
           :player-list="players"
           :loading="isLoading"
@@ -149,7 +150,7 @@ export default { /* eslint-disable */
         />
       </v-col>
 
-      <v-col cols="4">
+      <v-col lg="4" xs="12" sm="12">
         <player-list-card
           v-if="isLineupCardVisible"
           :player-list="selectedPlayers"
@@ -160,7 +161,7 @@ export default { /* eslint-disable */
         />
       </v-col>
 
-      <v-col cols="4">
+      <v-col lg="4" xs="12" sm="12">
         <player-list-card
           :player-list="substitutes"
           :loading="isLoading"
@@ -188,5 +189,9 @@ export default { /* eslint-disable */
     background-color: white;
     border-radius: 10px;
     width: 70vw;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
   }
 </style>
