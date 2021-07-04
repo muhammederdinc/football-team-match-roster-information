@@ -44,8 +44,11 @@ export default { /* eslint-disable */
     isUnpickDisabled() {
       return this.substitutes.length > 0;
     },
-    isAddSubstitutesButtonDisabled() {
+    isSubstitutesCardActive() {
       return this.selectedPlayers.length < 11;
+    },
+    isLineupCardMessageVisible() {
+      return !this.selectedPlayers.length;
     },
   },
   methods: {
@@ -155,8 +158,10 @@ export default { /* eslint-disable */
           v-if="isLineupCardVisible"
           :player-list="selectedPlayers"
           :loading="isLoading"
-          :disabled="isUnpickDisabled"
+          :preview="isUnpickDisabled"
+          :show-default-message="isLineupCardMessageVisible"
           title="Lineup"
+          defaultMessage="You haven't selected any player for lineup yet."
           @pickOrUnpick="unPickPlayer"
         />
       </v-col>
@@ -165,9 +170,11 @@ export default { /* eslint-disable */
         <player-list-card
           :player-list="substitutes"
           :loading="isLoading"
-          :disabled="isAddSubstitutesButtonDisabled"
-          title="Substitutes"
+          :preview="isSubstitutesCardActive"
+          :show-default-message="isSubstitutesCardActive"
           substitutes
+          title="Substitutes"
+          defaultMessage="Please pick 11 players for lineup before creating any substitutions"
           @pickOrUnpick="unPickPlayer"
           @addSubstition="isAddSubstitionDialogVisible = true"
         />

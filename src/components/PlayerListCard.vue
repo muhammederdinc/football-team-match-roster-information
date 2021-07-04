@@ -37,6 +37,16 @@ export default {
       required: false,
       default: false,
     },
+    defaultMessage: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    showDefaultMessage: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   computed: {
     isAddSubstitutesButtonVisible() {
@@ -72,7 +82,20 @@ export default {
           <span class="sofia-pro-title"> {{ title }} </span>
         </v-subheader>
 
-        <slot>
+        <v-row
+          v-if="showDefaultMessage && defaultMessage"
+          class="player-list-card__row"
+          align-content="center"
+          justify="center"
+          fill-height
+          no-gutters
+        >
+          <v-col class="sofia-pro-caption text-center" cols="12">
+            {{ defaultMessage }}
+          </v-col>
+        </v-row>
+
+        <slot v-else>
           <v-list-item
             v-for="(player, index) in playerList"
             :key="player.id"
@@ -149,6 +172,10 @@ export default {
     @media only screen and (max-width: 200px) {
       min-width: 0;
       max-width: 150px;
+    }
+
+    &__row {
+      height: 55vh;
     }
   }
 </style>
