@@ -65,8 +65,8 @@ export default {
         >
           <v-row no-gutters>
             <v-col class="pb-2" cols="12">
-              <span class="sofia-pro-caption">
-                Out Player
+              <span class="sofia-pro-form">
+                OUT PLAYER
               </span>
 
               <v-autocomplete
@@ -84,8 +84,8 @@ export default {
             </v-col>
 
             <v-col class="pb-2" cols="12">
-              <span class="sofia-pro-caption">
-                In Player
+              <span class="sofia-pro-form">
+                IN PLAYER
               </span>
 
               <v-autocomplete
@@ -103,8 +103,8 @@ export default {
             </v-col>
 
             <v-col>
-              <span class="sofia-pro-caption">
-                Substitution Minute
+              <span class="sofia-pro-form">
+                SUBSTITUTION MINUTE
               </span>
 
               <v-text-field
