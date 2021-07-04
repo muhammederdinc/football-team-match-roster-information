@@ -16,6 +16,10 @@ export default {
       isVisible: true,
       isValid: true,
       formData: {},
+      substitutionMinuteRules: [
+        (v) => !!v || 'Substitution minute is required',
+        (v) => (v >= 0 && v <= 90) || 'The entered value must be between 0 and 90',
+      ],
     };
   },
   methods: {
@@ -77,7 +81,7 @@ export default {
 
           <v-text-field
             v-model="formData.substitutionMinute"
-            :rules="[v => !!v || 'Substitution minute is required']"
+            :rules="substitutionMinuteRules"
             placeholder="Enter Minute Of Substitution"
             label="Substitution Minute"
             type="number"
