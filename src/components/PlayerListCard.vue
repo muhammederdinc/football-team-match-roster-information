@@ -90,7 +90,7 @@ export default {
           fill-height
           no-gutters
         >
-          <v-col class="sofia-pro-caption text-center" cols="12">
+          <v-col class="sofia-pro-caption text-center px-2" cols="12">
             {{ defaultMessage }}
           </v-col>
         </v-row>
