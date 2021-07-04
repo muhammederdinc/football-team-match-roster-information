@@ -10,6 +10,9 @@ export default {
   computed: {
     ...mapState('home', ['lineups', 'substitutes']),
   },
+  created() {
+    if (!this.lineups.length) this.$router.push('/');
+  },
 };
 </script>
 
