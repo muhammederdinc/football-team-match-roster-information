@@ -119,7 +119,7 @@ export default { /* eslint-disable */
           </v-avatar>
         </v-col>
 
-        <v-col cols="auto" class="d-none d-sm-flex">
+        <v-col cols="auto" class="d-none d-sm-flex pl-1">
           <span class="sofia-pro-title">
             Beşiktaş JK
           </span>
@@ -157,7 +157,6 @@ export default { /* eslint-disable */
         <player-list-card
           v-if="isLineupCardVisible"
           :player-list="selectedPlayers"
-          :loading="isLoading"
           :preview="isUnpickDisabled"
           :show-default-message="isLineupCardMessageVisible"
           title="Lineup"
@@ -169,7 +168,6 @@ export default { /* eslint-disable */
       <v-col lg="4" xs="12" sm="12">
         <player-list-card
           :player-list="substitutes"
-          :loading="isLoading"
           :preview="isSubstitutesCardActive"
           :show-default-message="isSubstitutesCardActive"
           substitutes
