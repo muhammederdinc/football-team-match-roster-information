@@ -33,3 +33,8 @@
 .v-toolbar__content, .v-toolbar__extension {
   padding: 0 0;
 }
+
+.theme--light.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn-outlined) {
+  background-color: #9699BE !important;
+  color: white !important;
+}
