@@ -52,8 +52,7 @@ export default {
       &__container {
         color: #12C990;
         font-size: 24px;
-        font-family: "SofiaPro";
-        font-weight: bold;
+        font-family: "SofiaProBold";
       }
   }
 </style>

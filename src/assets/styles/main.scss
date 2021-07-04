@@ -10,6 +10,12 @@
   url('../../fonts/Mostardesign-SofiaProRegular.otf');
 }
 
+@font-face {
+  font-family: "SofiaProBold";
+  src: local("SofiaProBold"),
+  url('../../fonts/Mostardesign-SofiaProBold.otf');
+}
+
 .sofia-pro-title {
   font-size: 20px;
   font-weight: 600;

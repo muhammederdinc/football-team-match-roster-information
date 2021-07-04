@@ -152,7 +152,7 @@ export default {
           mdi-plus
         </v-icon>
 
-        Add Substitutes
+        Add Substitution
       </v-btn>
     </v-card-text>
   </v-card>
