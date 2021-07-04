@@ -22,6 +22,14 @@ export default {
       ],
     };
   },
+  computed: {
+    isSubmitButtonDisable() {
+      const { outPlayer, inPlayer, substitutionMinute } = this.formData;
+      const substitutionMinuteRule = substitutionMinute >= 0 && substitutionMinute <= 90;
+
+      return !(outPlayer && inPlayer && substitutionMinuteRule);
+    },
+  },
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
@@ -116,7 +124,7 @@ export default {
         <v-spacer />
 
         <v-btn
-          text small
+          text x-small
           color="error"
           @click="closeDialog"
         >
@@ -125,6 +133,7 @@ export default {
 
         <v-btn
           small depressed
+          :disabled="isSubmitButtonDisable"
           color="#3852FF"
           width="100px"
           class="pa-4 white--text text-capitalize"
