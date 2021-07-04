@@ -134,7 +134,7 @@ export default {
         <v-btn
           small depressed
           :disabled="isSubmitButtonDisable"
-          color="#3852FF"
+          color="lightRoyalBlue"
           width="100px"
           class="pa-4 white--text text-capitalize"
           @click="submit"

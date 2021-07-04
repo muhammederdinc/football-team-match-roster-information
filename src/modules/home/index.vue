@@ -131,7 +131,7 @@ export default { /* eslint-disable */
           <v-btn
             :disabled="isConfirmButtonDisable"
             depressed block
-            color="#3852FF"
+            color="lightRoyalBlue"
             class="white--text text-capitalize"
             @click="confirm"
           >

@@ -7,7 +7,7 @@ export default {
 <template>
   <v-app id="inspire">
     <v-app-bar
-      color="#02063F"
+      color="nightBlue"
       class="app-bar"
       app
       flat

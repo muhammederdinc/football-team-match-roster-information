@@ -130,7 +130,7 @@ export default {
                 v-else-if="!isSubstitutionMinuteVisible(player) && !preview"
                 small text
                 :disabled="disabled"
-                :color="allPlayers ? '#3852FF' : '#E63846'"
+                :color="allPlayers ? 'lightRoyalBlue' : 'fadedRed'"
                 @click="emitPickOrUnpick(player, index)"
               >
                 {{ allPlayers ? 'PICK' : 'UNPINK' }}
@@ -144,7 +144,7 @@ export default {
         v-if="substitutes && isAddSubstitutesButtonVisible && !preview"
         :disabled="disabled"
         small text
-        color="#12C990"
+        color="aquaGreen"
         class="mx-1 my-0 text-capitalize"
         @click="$emit('addSubstition')"
       >

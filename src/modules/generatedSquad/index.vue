@@ -21,7 +21,7 @@ export default {
     <v-toolbar class="ma-8" flat dense>
       <v-row justify="center">
         <v-col cols="auto">
-          <v-icon x-large color="#12C990">
+          <v-icon x-large color="aquaGreen">
             mdi-check-circle
           </v-icon>
 
