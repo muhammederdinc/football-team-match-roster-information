@@ -43,57 +43,76 @@ export default {
   <v-dialog
     v-model="isVisible"
     persistent
-    width="500"
+    width="350"
   >
     <v-card>
-      <v-card-title class="text-h5">
-        <span class="sofia-pro-title">Add Substition</span>
+      <v-card-title class="text-h5 py-2">
+        <span class="sofia-pro-subtitle">Add Substition</span>
       </v-card-title>
 
-      <v-card-text>
+      <v-card-text class="pb-1 my-0">
         <v-form
           v-model="isValid"
           ref="form"
         >
-          <v-autocomplete
-            v-model="formData.outPlayer"
-            :items="lineups"
-            :rules="[v => !!v || 'Out player is required']"
-            dense
-            outlined
-            clearable
-            return-object
-            label="Out Player"
-            item-text="display_name"
-          />
+          <v-row no-gutters>
+            <v-col class="pb-2" cols="12">
+              <span class="sofia-pro-caption">
+                Out Player
+              </span>
 
-          <v-autocomplete
-            v-model="formData.inPlayer"
-            :items="substitutePlayers"
-            :rules="[v => !!v || 'In player is required']"
-            dense
-            outlined
-            clearable
-            return-object
-            label="In Player"
-            item-text="display_name"
-          />
+              <v-autocomplete
+                v-model="formData.outPlayer"
+                :items="lineups"
+                :rules="[v => !!v || 'Out player is required']"
+                dense
+                outlined
+                clearable
+                return-object
+                hide-details="auto"
+                item-text="display_name"
+                placeholder="Enter player name"
+              />
+            </v-col>
 
-          <v-text-field
-            v-model="formData.substitutionMinute"
-            :rules="substitutionMinuteRules"
-            placeholder="Enter Minute Of Substitution"
-            label="Substitution Minute"
-            type="number"
-            outlined
-            dense
-          />
+            <v-col class="pb-2" cols="12">
+              <span class="sofia-pro-caption">
+                In Player
+              </span>
+
+              <v-autocomplete
+                v-model="formData.inPlayer"
+                :items="substitutePlayers"
+                :rules="[v => !!v || 'In player is required']"
+                dense
+                outlined
+                clearable
+                return-object
+                hide-details="auto"
+                item-text="display_name"
+                placeholder="Enter player name"
+              />
+            </v-col>
+
+            <v-col>
+              <span class="sofia-pro-caption">
+                Substitution Minute
+              </span>
+
+              <v-text-field
+                v-model="formData.substitutionMinute"
+                :rules="substitutionMinuteRules"
+                placeholder="Enter Minute Of Substitution"
+                hide-details="auto"
+                outlined
+                dense
+              />
+            </v-col>
+          </v-row>
         </v-form>
       </v-card-text>
 
-      <v-divider />
-
-      <v-card-actions>
+      <v-card-actions class="px-6 py-3">
         <v-spacer />
 
         <v-btn
@@ -106,10 +125,12 @@ export default {
 
         <v-btn
           small depressed
-          color="success"
+          color="#3852FF"
+          width="100px"
+          class="pa-4 white--text text-capitalize"
           @click="submit"
         >
-          I accept
+          Add
         </v-btn>
       </v-card-actions>
     </v-card>
