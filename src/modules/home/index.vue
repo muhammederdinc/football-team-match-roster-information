@@ -41,6 +41,9 @@ export default { /* eslint-disable */
     isConfirmButtonDisable() {
       return this.selectedPlayers.length !== 11;
     },
+    isUnpickDisabled() {
+      return this.substitutes.length > 0;
+    }
   },
   methods: {
     ...mapActions('home', ['fetchPlayers', 'setCreatedStaff']),
@@ -56,6 +59,15 @@ export default { /* eslint-disable */
         .finally(() => {
           this.isLoading = false;
         });
+    },
+    confirm() {
+      const params = {
+        lineups: this.selectedPlayers,
+        substitutes: this.substitutes,
+      };
+
+      this.setCreatedStaff(params);
+      this.$router.push('/generatedSquad');
     },
     pickPlayer(playerParams) {
       const { index, ...player } = playerParams;
@@ -83,15 +95,6 @@ export default { /* eslint-disable */
       this.lineups = this.lineups.filter(player => player.id !== substitutionParams.outPlayer.id);
       this.substitutePlayers = this.substitutePlayers.filter(player => player.id !== substitutionParams.inPlayer.id);
       this.$nextTick(() => { this.isLineupCardVisible = true });
-    },
-    confirm() {
-      const params = {
-        lineups: this.selectedPlayers,
-        substitutes: this.substitutes,
-      };
-
-      this.setCreatedStaff(params);
-      this.$router.push('/generatedSquad');
     },
   },
 };
@@ -148,6 +151,7 @@ export default { /* eslint-disable */
           v-if="isLineupCardVisible"
           :player-list="selectedPlayers"
           :loading="isLoading"
+          :disabled="isUnpickDisabled"
           title="Lineup"
           @pickOrUnpick="unPickPlayer"
         />
