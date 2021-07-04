@@ -73,10 +73,10 @@ export default {
   <v-card
     id="scroll-target"
     class="overflow-y-auto player-list-card"
-    height="65vh"
+    height="63vh"
     :loading="loading"
   >
-    <v-card-text>
+    <v-card-text class="pa-0 ma-0">
       <v-list v-if="!loading" subheader>
         <v-subheader v-if="title">
           <span class="sofia-pro-title"> {{ title }} </span>
@@ -130,7 +130,7 @@ export default {
                 v-else-if="!isSubstitutionMinuteVisible(player) && !preview"
                 small text
                 :disabled="disabled"
-                :color="allPlayers ? 'primary' : 'error'"
+                :color="allPlayers ? '#3852FF' : '#E63846'"
                 @click="emitPickOrUnpick(player, index)"
               >
                 {{ allPlayers ? 'PICK' : 'UNPINK' }}
