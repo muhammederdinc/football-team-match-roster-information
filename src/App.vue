@@ -15,7 +15,7 @@ export default {
       <v-container class="py-0 fill-height app-bar__container">
         <v-row>
           <v-col cols="auto">
-            SCOUTIUM
+            Create Football Team
           </v-col>
 
           <v-spacer />

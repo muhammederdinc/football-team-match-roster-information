@@ -43,18 +43,12 @@ export default {
             no-gutters
           >
             <v-col cols="auto">
-              <v-avatar size="48" outline>
+              <v-avatar size="120" outline>
                 <img
-                  src="@/assets/bjk.svg"
-                  alt="Bjk"
+                  src="@/assets/fb.svg"
+                  alt="FB"
                 >
               </v-avatar>
-            </v-col>
-
-            <v-col class="text-center" cols="12">
-              <span class="sofia-pro-title">
-                Beşiktaş JK
-              </span>
             </v-col>
           </v-row>
         </player-list-card>

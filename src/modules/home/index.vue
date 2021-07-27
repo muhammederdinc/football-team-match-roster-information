@@ -58,8 +58,7 @@ export default { /* eslint-disable */
 
       this.fetchPlayers()
         .then(({ data }) => {
-          this.players = data.players
-            .filter((player) => player.team.club.id === 4029 && player.gender === 'male');
+          this.players = data.players;
           this.meta = data.meta;
         })
         .finally(() => {
@@ -113,15 +112,15 @@ export default { /* eslint-disable */
         <v-col cols="auto">
           <v-avatar size="32" outline>
             <img
-              src="@/assets/bjk.svg"
-              alt="Bjk"
+              src="@/assets/fb.svg"
+              alt="FB"
             >
           </v-avatar>
         </v-col>
 
         <v-col cols="auto" class="d-none d-sm-flex pl-1">
           <span class="sofia-pro-title">
-            Beşiktaş JK
+            Fenerbahçe
           </span>
         </v-col>
 
